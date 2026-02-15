@@ -1,66 +1,115 @@
-## Foundry
+# 🎲 Foundry Smart Contract Lottery
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+A decentralized lottery smart contract built with **Solidity** and **Foundry**, powered by:
 
-Foundry consists of:
+- 🔐 Chainlink VRF v2.5 (Verifiable Randomness)
+- 🤖 Chainlink Automation (Keepers)
+- 🧪 Unit Testing
+- 🔁 Fuzz Testing
 
-- **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
-- **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
-- **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
-- **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+The contract automatically selects a provably random winner after a fixed time interval.
 
-## Documentation
+---
 
-https://book.getfoundry.sh/
+## 🚀 Features
 
-## Usage
+- Users can enter the raffle by paying an entrance fee
+- Automated winner selection using Chainlink Automation
+- Provably random winner using Chainlink VRF
+- Secure state machine (OPEN → CALCULATING → OPEN)
+- Fully tested with Foundry
+- Fuzz testing included
+- Deployment & interaction scripts included
 
-### Build
+---
 
-```shell
-$ forge build
+## 🛠 Tech Stack
+
+- Solidity ^0.8.x
+- Foundry
+- Chainlink VRF v2.5
+- Chainlink Automation
+- Sepolia Testnet
+
+---
+
+## 📂 Project Structure
+
+foundry-smart-contract-lottery/
+│
+├── src/ # Smart contracts
+├── script/ # Deployment & interaction scripts
+├── test/ # Unit & fuzz tests
+├── foundry.toml # Foundry config
+├── .gitignore
+└── README.md
+
+---
+
+# ⚙️ Installation
+
+## 1️⃣ Install Foundry
+
+If you don’t have Foundry installed:
+
+```bash
+curl -L https://foundry.paradigm.xyz | bash
+source ~/.bashrc
+foundryup
 ```
 
-### Test
+2️⃣ Clone the Repository
+git clone https://github.com/vedantghate18/foundry-smart-contract-lottery.git
 
-```shell
-$ forge test
-```
+3️⃣ Install Dependencies
+forge install
 
-### Format
+🔐 How It Works
 
-```shell
-$ forge fmt
-```
+1. Users enter the raffle by sending ETH.
 
-### Gas Snapshots
+2. After a fixed interval, Chainlink Automation triggers performUpkeep.
 
-```shell
-$ forge snapshot
-```
+3. Chainlink VRF requests randomness.
 
-### Anvil
+4. A random winner is selected.
 
-```shell
-$ anvil
-```
+5. The winner receives the contract balance.
 
-### Deploy
+6. The raffle resets.
 
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
+🧠 Security Features
 
-### Cast
+- Custom errors (gas optimized)
 
-```shell
-$ cast <subcommand>
-```
+- Strict state management
 
-### Help
+- Prevents entry during CALCULATING phase
 
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+- Validates upkeep before execution
+
+- Ensures valid VRF request before fulfillment
+
+📚 What This Project Demonstrates
+
+- Smart contract architecture
+
+- Chainlink VRF integration
+
+- Automation integration
+
+- Foundry testing framework
+
+- Fuzz testing
+
+- Deployment scripting
+
+- Proper Git project structure
+
+📜 License
+
+MIT
+
+👨‍💻 Author
+
+Vedant Ghate
