@@ -34,7 +34,6 @@ The contract automatically selects a provably random winner after a fixed time i
 ---
 
 ## 📂 Project Structure
-
 foundry-smart-contract-lottery/
 │
 ├── src/ # Smart contracts
